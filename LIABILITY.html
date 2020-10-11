@@ -7,12 +7,14 @@
     <style>
 
 
+
         body {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             padding: 1em;
         }
     </style>
     <style>
+
 
 
 
@@ -33,6 +35,15 @@
             color: hsl(30, 0%, 0%);
         }
     </style>
+
+    <script>
+        var delayInMilliseconds = 10; //1 second
+
+        setTimeout(function () {
+            console.log("scroll");
+            window.scrollTo(0, 0);
+        }, delayInMilliseconds);
+    </script>
 </head>
 <body>
     <h1>Disclaimer</h1>
