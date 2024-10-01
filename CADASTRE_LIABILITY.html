@@ -34,9 +34,11 @@
     }
   </style>
   <script>
+var currentLang = 'en';
     function toggleLanguage() {
-      const currentLang = 'en';
+      
       if (currentLang === 'fr') {
+	currentLang = 'en'
         // Passer à l'anglais
         document.documentElement.lang = 'en';
         document.getElementById('lang-btn').innerText = 'Passer en Français';
@@ -83,6 +85,8 @@
           <p>If you have any questions or suggestions about this disclaimer, do not hesitate to contact us at <a href="mailto:evoimmo@gmail.com">evoimmo@gmail.com</a>.</p>
         `;
       } else {
+	currentLang = 'fr'
+
         // Repasser au français
         document.documentElement.lang = 'fr';
         document.getElementById('lang-btn').innerText = 'Switch to English';
