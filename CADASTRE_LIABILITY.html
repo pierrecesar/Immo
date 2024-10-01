@@ -1,44 +1,152 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title>DISCLAIMER</title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2113.6">
-  <style type="text/css">
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 24.0px 'Helvetica Neue'; color: #000000; -webkit-text-stroke: #000000}
-    p.p3 {margin: 0.0px 0.0px 12.0px 0.0px; font:16.0px 'Helvetica Neue'; color: #000000; -webkit-text-stroke: #000000}
-    span.s1 {font-kerning: none}
-    span.s2 {font: 12.0px 'Helvetica Neue'; text-decoration: underline ; font-kerning: none; color: #0000e9; -webkit-text-stroke: 0px #0000e9}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avertissement / Disclaimer</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      color: #000;
+      margin: 20px;
+    }
+    h1 {
+      font-size: 30px;
+      color: #262626;
+    }
+    p {
+      font-size: 16px;
+      color: #000;
+    }
+    .lang-btn {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .lang-btn:hover {
+      background-color: #0056b3;
+    }
   </style>
+  <script>
+    function toggleLanguage() {
+      const currentLang = document.documentElement.lang;
+      if (currentLang === 'fr') {
+        // Passer à l'anglais
+        document.documentElement.lang = 'en';
+        document.getElementById('lang-btn').innerText = 'Passer en Français';
+        document.getElementById('disclaimer').innerHTML = `
+          <h1>Disclaimer</h1>
+          <p><strong>App Disclaimer</strong></p>
+          <p>The information provided by EvoImmo ("we," "us" or "our") on the Cadastre App (the "App") and our mobile application is for general informational purposes only.</p>
+          <p>All information on our mobile application is provided in good faith, however we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability or completeness of any information on the App or our mobile application.</p>
+          <p>UNDER NO CIRCUMSTANCE SHALL WE HAVE ANY LIABILITY TO YOU FOR ANY LOSS OR DAMAGE OF ANY KIND INCURRED AS A RESULT OF THE USE OF THE APP OR RELIANCE ON ANY INFORMATION PROVIDED ON THE APP. YOUR USE OF THE APP AND YOUR RELIANCE ON ANY INFORMATION ON THE APP IS SOLELY AT YOUR OWN RISK.</p>
+          
+          <p><strong>Professional disclaimer</strong></p>
+          <p>The App cannot and does not contain real estate nor renting advice.</p>
+          <p>The real estate and renting information is provided for general informational and educational purposes only and is not a substitute for professional advice. Accordingly, before taking any actions based upon such information, we encourage you to consult with the appropriate professionals.</p>
+          <p>We do not provide any kind of real estate nor renting advice. THE USE OR RELIANCE OF ANY INFORMATION CONTAINED ON THIS APP IS SOLELY AT YOUR OWN RISK.</p>
+          
+          <p><strong>App Unavailability and No Refund Policy</strong></p>
+          <p>We strive to maintain and improve the Cadastre application (the "App"); however, we cannot guarantee that the App or its services will always be accessible or operate without interruption. We reserve the right to modify, suspend, or remove the App at any time, for any reason, including, but not limited to, maintenance, technical issues (such as server problems), business decisions, or due to the removal of the App by Apple.</p>
+          <p>In the event of temporary or permanent unavailability of the App, whether caused by us, Apple, or circumstances beyond our control, you agree that:</p>
+          <ul>
+            <li><strong>No refunds or compensation will be provided</strong> for any purchases, subscriptions, or "lifetime" (perpetual) purchases made through the App, even if it becomes inaccessible or non-functional, for any reason.</li>
+            <li><strong>Non-consumable purchases and subscriptions</strong> will remain available for restoration as long as the App is available on the App Store. However, if the App is permanently removed or discontinued, <strong>you will not be entitled to any refund or compensation</strong> for previously purchased content or features.</li>
+            <li>By making purchases or subscriptions within the App, you acknowledge and agree that all transactions are <strong>final</strong> and non-refundable.</li>
+          </ul>
+
+<p><strong>Appropriate Use</strong></p>
+<p>By using this application, you agree not to:</p>
+<ul>
+  <li>Bypass the security systems of the application, including any digital rights management (DRM) or authentication mechanisms.</li>
+  <li>Use the application for any illegal or unauthorized activity.</li>
+  <li>Resell or reproduce the application or its content without express permission.</li>
+</ul>
+
+<p><strong>Intellectual Property Rights</strong></p>
+<p>All content of the application, including but not limited to texts, graphics, logos, images, code, and software, is the property of EvoImmo or its licensors and is protected by intellectual property laws. You may not reproduce, distribute, modify, create derivative works, display, or otherwise exploit the content without our express written permission.</p>
+
+
+<p><strong>Changes to Terms and Conditions</strong></p>
+<p>We reserve the right to modify these terms and conditions at any time. Any modification will take effect upon publication on the application. Your continued use of the application after such modifications constitutes your acceptance of the new terms.</p>
+
+<p><strong>Minimum Age Requirement</strong></p>
+<p>This application is intended for users aged 18 and over. By using this application, you confirm that you are at least 18 years old or have obtained the consent of a parent or legal guardian to use the application.</p>
+
+          <p>Last updated October 11, 2020.</p>
+          <p>If you have any questions or suggestions about this disclaimer, do not hesitate to contact us at <a href="mailto:evoimmo@gmail.com">evoimmo@gmail.com</a>.</p>
+        `;
+      } else {
+        // Repasser au français
+        document.documentElement.lang = 'fr';
+        document.getElementById('lang-btn').innerText = 'Switch to English';
+        document.getElementById('disclaimer').innerHTML = `
+          <h1>Avertissement</h1>
+          <p><strong>Avertissement de l'application</strong></p>
+          <p>Les informations fournies par EvoImmo (« nous », « notre » ou « nos ») sur l'application Cadastre (l'« Application ») et notre application mobile sont uniquement à des fins d'information générale.</p>
+          <p>Toutes les informations sur notre application mobile sont fournies de bonne foi. Cependant, nous ne faisons aucune déclaration ni garantie d'aucune sorte, explicite ou implicite, quant à l'exactitude, l'adéquation, la validité, la fiabilité, la disponibilité ou l'exhaustivité de toute information sur l'Application ou notre application mobile.</p>
+          <p>EN AUCUN CAS, NOUS NE SERONS RESPONSABLES ENVERS VOUS DE TOUTE PERTE OU DOMMAGE DE QUELQUE NATURE QUE CE SOIT DÉCOULANT DE L'UTILISATION DE L'APPLICATION OU DE LA CONFIANCE ACCORDÉE À TOUTE INFORMATION FOURNIE SUR L'APPLICATION. VOTRE UTILISATION DE L'APPLICATION ET VOTRE CONFIANCE DANS TOUTE INFORMATION SUR L'APPLICATION SE FONT EXCLUSIVEMENT À VOS PROPRES RISQUES.</p>
+          
+          <p><strong>Avertissement professionnel</strong></p>
+          <p>L'Application ne peut pas et ne contient pas de conseils immobiliers ni de conseils en matière de location.</p>
+          <p>Les informations relatives à l'immobilier et à la location sont fournies à titre informatif et éducatif général uniquement et ne remplacent pas des conseils professionnels. Par conséquent, avant de prendre des mesures basées sur ces informations, nous vous encourageons à consulter des professionnels appropriés.</p>
+          <p>Nous ne fournissons aucun type de conseil immobilier ni de conseil en location. L'UTILISATION OU LA CONFIANCE ACCORDÉE À TOUTE INFORMATION CONTENUE DANS CETTE APPLICATION SE FAIT EXCLUSIVEMENT À VOS PROPRES RISQUES.</p>
+          
+          <p><strong>Indisponibilité de l'Application et Politique de Non-Remboursement</strong></p>
+          <p>Nous nous efforçons de maintenir et d'améliorer l'application Cadastre (l'« Application ») ; cependant, nous ne pouvons garantir que l'Application ou ses services seront toujours accessibles ou fonctionneront sans interruption. Nous nous réservons le droit de modifier, suspendre ou retirer l'Application à tout moment, pour quelque raison que ce soit, y compris, mais sans s'y limiter, des raisons de maintenance, des problèmes techniques (tels que des problèmes de serveur), des décisions commerciales, ou en raison du retrait de l'Application par Apple.</p>
+          <p>En cas d'indisponibilité temporaire ou permanente de l'Application, que cela soit causé par nous, Apple ou des circonstances indépendantes de notre volonté, vous acceptez que :</p>
+          <ul>
+            <li><strong>Aucun remboursement ou compensation ne sera fourni</strong> pour tout achat, abonnement ou achat « à vie » (perpétuel) effectué via l'Application, même si elle devient inaccessible ou non fonctionnelle, pour quelque raison que ce soit.</li>
+            <li>Les <strong>achats non consommables et les abonnements</strong> resteront disponibles pour restauration tant que l'Application est disponible sur l'App Store. Toutefois, si l'Application est définitivement supprimée ou interrompue, <strong>vous ne serez pas en droit d'obtenir un remboursement ou une compensation</strong> pour les contenus ou fonctionnalités achetés auparavant.</li>
+            <li>En effectuant des achats ou des abonnements dans l'Application, vous reconnaissez et acceptez que toutes les transactions sont <strong>définitives</strong> et non remboursables.</li>
+          </ul>
+
+<p><strong>Utilisation appropriée</strong></p>
+<p>En utilisant cette application, vous acceptez de ne pas :</p>
+<ul>
+  <li>Contourner les systèmes de sécurité de l'application, y compris tout mécanisme de gestion des droits numériques (DRM) ou d'authentification.</li>
+  <li>Utiliser l'application pour toute activité illégale ou non autorisée.</li>
+  <li>Revendre ou reproduire l'application ou son contenu sans autorisation expresse.</li>
+</ul>
+
+<p><strong>Droits de propriété intellectuelle</strong></p>
+<p>Tout le contenu de l'application, y compris mais sans s'y limiter, les textes, graphiques, logos, images, codes et logiciels, est la propriété d'EvoImmo ou de ses concédants de licence et est protégé par les lois sur la propriété intellectuelle. Vous ne pouvez pas reproduire, distribuer, modifier, créer des œuvres dérivées, afficher ou exploiter de toute autre manière le contenu sans notre autorisation écrite expresse.</p>
+
+<p><strong>Modifications des termes et conditions</strong></p>
+<p>Nous nous réservons le droit de modifier ces termes et conditions à tout moment. Toute modification sera effective dès sa publication sur l'application. Votre utilisation continue de l'application après la publication de telles modifications constitue votre acceptation des nouveaux termes.</p>
+
+<p><strong>Âge minimum requis</strong></p>
+<p>Cette application est destinée aux utilisateurs âgés de 18 ans et plus. En utilisant cette application, vous confirmez que vous avez au moins 18 ans ou que vous avez obtenu le consentement d'un parent ou d'un tuteur légal pour utiliser l'application.</p>
+
+          <p>Dernière mise à jour le 11 octobre 2020.</p>
+          <p>Si vous avez des questions ou des suggestions concernant cet avertissement, n'hésitez pas à nous contacter à <a href="mailto:evoimmo@gmail.com">evoimmo@gmail.com</a>.</p>
+        `;
+      }
+    }
+
+// Appeler la méthode au chargement de la page
+    window.onload = function() {
+      toggleLanguage(); // Charge le contenu par défaut (ici, en français)
+      toggleLanguage(); // Charge le contenu par défaut (ici, en français)
+    };
+  </script>
 </head>
 <body>
-<h1 style="margin: 0.0px 0.0px 20.1px 0.0px; font: 30.0px 'Helvetica Neue'; color: #262626; -webkit-text-stroke: #262626"><span class="s1"><b>Disclaimer</b></span></h1>
-<p class="p2"><span class="s1"><b>App Disclaimer</b></span></p>
-<p class="p3"><span class="s1">The information provided by EvoImmo (“we,” “us” or “our”) on the Cadastre App (the “App”) and our mobile application is for general informational purposes only.<span class="Apple-converted-space"> </span></span></p>
-<p class="p3"><span class="s1">All information on our mobile application is provided in good faith, however we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability or completeness of any information on the App or our mobile application.<span class="Apple-converted-space"> </span></span></p>
-<p class="p3"><span class="s1">UNDER NO CIRCUMSTANCE SHALL WE HAVE ANY LIABILITY TO YOU FOR ANY LOSS OR DAMAGE OF ANY KIND INCURRED AS A RESULT OF THE USE OF THE APP OR RELIANCE ON ANY INFORMATION PROVIDED ON THE APP. YOUR USE OF THE APP AND YOUR RELIANCE ON ANY INFORMATION ON THE APP IS SOLELY AT YOUR OWN RISK.<span class="Apple-converted-space"> </span></span></p>
-<p class="p3"><span class="s1"><span class="Apple-converted-space"> </span></span></p>
 
-  <p class="p2"><span class="s1"><b>Professional disclaimer</b></span></p>
-<p class="p3"><span class="s1">The App cannot and does not contain real estate nor renting advice.<span class="Apple-converted-space"> </span></span></p>
-<p class="p3"><span class="s1">The real estate and renting information is provided for general informational and educational purposes only and is not a substitute for professional advice. Accordingly, before taking any actions based upon such information, we encourage you to consult with the appropriate professionals.<span class="Apple-converted-space"> </span></span></p>
-<p class="p3"><span class="s1">We do not provide any kind of real estate nor reting advice.<span class="Apple-converted-space"> </span></span></p>
-<p class="p3"><span class="s1">THE USE OR RELIANCE OF ANY INFORMATION CONTAINED ON THIS APP IS SOLELY AT YOUR OWN RISK.<span class="Apple-converted-space"> </span></span></p>
-<p class="p3"><span class="s1"><span class="Apple-converted-space"> </span></span></p>
+<button id="lang-btn" class="lang-btn" onclick="toggleLanguage()">Switch to English</button>
 
-  <p class="p2"><span class="s1"><b>App Unavailability and No Refund Policy</b></span></p>
-<p class="p3"><span class="s1">We strive to maintain and improve the Cadastre application (the “App”); however, we cannot guarantee that the App or its services will always be accessible or operate without interruption. We reserve the right to modify, suspend, or remove the App at any time, for any reason, including, but not limited to, maintenance, technical issues (such as server problems), business decisions, or due to the removal of the App by Apple.</span></p>
-<p class="p3"><span class="s1">In the event of temporary or permanent unavailability of the App, whether caused by us, Apple, or circumstances beyond our control, you agree that:</span></p>
-<p class="p3"><span class="s1">- <b>No refunds or compensation will be provided for any purchases, subscriptions, or "lifetime" (perpetual) purchases</b> made through the App, even if it becomes inaccessible or non-functional, for any reason.</span></p>
-<p class="p3"><span class="s1">- <b>Non-consumable purchases and subscriptions</b> will remain available for restoration as long as the App is available on the App Store. However, if the App is permanently removed or discontinued, <b>you will not be entitled to any refund or compensation</b> for previously purchased content or features.</span></p>
-<p class="p3"><span class="s1">- By making purchases or subscriptions within the App, you acknowledge and agree that all transactions are <b>final</b> and non-refundable, unless otherwise required by applicable law or Apple’s refund policies.</span></p>
-<p class="p3"><span class="s1">To the extent permitted by law, we disclaim all liability for any loss or damage resulting from the unavailability, modification, suspension, or removal of the App and its services.</span></p>
-  
-<p class="p3"><span class="s1"><span class="Apple-converted-space"> </span></span></p>
-<p class="p3"><span class="s1">Last updated October 11, 2020<span class="Apple-converted-space"> </span></span></p>
-<p class="p3"><span class="s1">If you have any questions or suggestions about this disclaimer, do not hesitate to contact us at <a href="mailto:evoimmo@gmail.com"><span class="s2">evoimmo@gmail.com</span></a>.<span class="Apple-converted-space"> </span></span></p>
+<div id="disclaimer">
+
+</div>
+
+
+
 
 </body>
 </html>
