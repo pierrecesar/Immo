@@ -134,10 +134,10 @@ var currentLang = 'en';
       }
     }
 
-// Appeler la méthode au chargement de la page
-    window.onload = function() {
-      toggleLanguage(); // Charge le contenu par défaut (ici, en français)
-    };
+// Appel de la fonction après chargement complet du DOM
+document.addEventListener('DOMContentLoaded', function() {
+      toggleLanguage(); // Appel au démarrage
+    });
   </script>
 </head>
 <body>
