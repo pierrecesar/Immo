@@ -35,7 +35,7 @@
   </style>
   <script>
     function toggleLanguage() {
-      const currentLang = document.documentElement.lang;
+      const currentLang = 'en';
       if (currentLang === 'fr') {
         // Passer à l'anglais
         document.documentElement.lang = 'en';
@@ -132,7 +132,6 @@
 
 // Appeler la méthode au chargement de la page
     window.onload = function() {
-      toggleLanguage(); // Charge le contenu par défaut (ici, en français)
       toggleLanguage(); // Charge le contenu par défaut (ici, en français)
     };
   </script>
