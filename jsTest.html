@@ -57,6 +57,7 @@
             <button onclick="showSimpleAlert()">Alerte Simple</button>
             <button onclick="showActionAlert()">Alerte avec Actions</button>
             <button onclick="showNonBlockingAlert()">Alerte Non-Bloquante</button>
+            <button onclick="showBlockingAlert()">Alerte Totalement Bloquante</button>
         </div>
     </div>
 
@@ -117,7 +118,30 @@
                     title: "OK",
                     style: "default"
                 }],
-                isCancellable: true
+                isCancellable: true,
+                isCompletelyBlocking: false
+            };
+            
+            showCustomAlert(alertConfig);
+        }
+
+        // Alerte totalement bloquante
+        function showBlockingAlert() {
+            const alertConfig = {
+                title: "⚠️ Alerte Bloquante",
+                message: "Cette alerte ne peut pas être fermée, même en cliquant sur les boutons.",
+                buttons: [
+                    {
+                        title: "Action Inactive",
+                        style: "default"
+                    },
+                    {
+                        title: "Ne Fermera Pas",
+                        style: "cancel"
+                    }
+                ],
+                isCancellable: false,
+                isCompletelyBlocking: true
             };
             
             showCustomAlert(alertConfig);
