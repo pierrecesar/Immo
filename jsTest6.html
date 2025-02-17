@@ -137,7 +137,7 @@
     <div class="window-group">
         <div class="window">
             <div class="title-bar">
-                <span>Test Bridge Native - Windows 98</span>
+                <span>HTML/JS</span>
                 <div class="title-bar-buttons">
                     <a href="#" class="title-button">_</a>
                     <a href="#" class="title-button">□</a>
@@ -148,9 +148,8 @@
                 <div>Choisissez un type d'alerte :</div>
                 <div class="divider"></div>
                 <div class="button-group">
-                    <button onclick="showSimpleAlert()">Alerte Simple</button>
+                   <!-- <button onclick="showSimpleAlert()">Alerte Simple</button> -->
                     <button onclick="showActionAlert()">Alerte avec Actions</button>
-                    <button onclick="showNonBlockingAlert()">Alerte Non-Bloquante</button>
                     <button onclick="showBlockingAlert()">⚠️ Alerte Bloquante</button>
                 </div>
             </div>
@@ -192,16 +191,16 @@
         // Alerte avec deux boutons dont un qui ouvre une URL
         function showActionAlert() {
             const alertConfig = {
-                title: "Action Requise",
-                message: "Voulez-vous visiter notre site web ?",
+                title: "Cher utilisateurs 👋",
+                message: "Pensez à mettre à jour l'app pour profiter des dernières fonctionnalités !",
                 buttons: [
                     {
-                        title: "Visiter",
+                        title: "Mettre à jour",
                         style: "default",
                         url: "https://www.example.com"
                     },
                     {
-                        title: "Annuler",
+                        title: "Plus tard",
                         style: "cancel"
                     }
                 ],
@@ -230,17 +229,13 @@
         // Alerte totalement bloquante
         function showBlockingAlert() {
             const alertConfig = {
-                title: "⚠️ Alerte Bloquante",
-                message: "Cette alerte ne peut pas être fermée, même en cliquant sur les boutons.",
+                title: "Oups 😬",
+                message: "Cette app est obsolète, vous devez la mettre à jour...",
                 buttons: [
                     {
-                        title: "Action",
+                        title: "Mettre à jour",
                         style: "default",
                         url: "https://www.example.com"
-                    },
-                    {
-                        title: "Ne Fermera Pas",
-                        style: "cancel"
                     }
                 ],
                 isCancellable: false,
