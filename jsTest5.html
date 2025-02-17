@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Bridge Native - Style Windows 98</title>
+    <style>
+        body {
+            font-family: "MS Sans Serif", "Microsoft Sans Serif", sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #008080;
+            background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.1) 0px, rgba(255,255,255,0.1) 2px, transparent 2px, transparent 4px);
+        }
+
+        .window {
+            background-color: #c0c0c0;
+            border: 2px solid;
+            border-color: #ffffff #808080 #808080 #ffffff;
+            box-shadow: 2px 2px 0 #000;
+            padding: 2px;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .title-bar {
+            background: #000080;
+            padding: 3px 5px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .title-bar-buttons {
+            display: flex;
+            gap: 2px;
+        }
+
+        .title-button {
+            width: 16px;
+            height: 14px;
+            background: #c0c0c0;
+            border: 1px solid;
+            border-color: #ffffff #808080 #808080 #ffffff;
+            font-size: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            text-decoration: none;
+            line-height: 1;
+        }
+
+        .window-content {
+            background-color: #c0c0c0;
+            padding: 10px;
+            border: 2px solid;
+            border-color: #dfdfdf #808080 #808080 #dfdfdf;
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        button {
+            font-family: "MS Sans Serif", "Microsoft Sans Serif", sans-serif;
+            background-color: #c0c0c0;
+            border: 2px solid;
+            border-color: #ffffff #808080 #808080 #ffffff;
+            padding: 4px 10px;
+            font-size: 12px;
+            cursor: pointer;
+            color: black;
+            min-width: 100px;
+            text-align: center;
+            position: relative;
+        }
+
+        button:active {
+            border-color: #808080 #ffffff #ffffff #808080;
+            padding: 5px 9px 3px 11px;
+        }
+
+        .window-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .taskbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 28px;
+            background-color: #c0c0c0;
+            border-top: 2px solid #ffffff;
+            display: flex;
+            align-items: center;
+            padding: 2px;
+        }
+
+        .start-button {
+            display: flex;
+            align-items: center;
+            background-color: #c0c0c0;
+            border: 2px solid;
+            border-color: #ffffff #808080 #808080 #ffffff;
+            padding: 2px 5px;
+            margin-right: 10px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .divider {
+            height: 1px;
+            background-color: #808080;
+            margin: 10px 0;
+            border-bottom: 1px solid #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="window-group">
+        <div class="window">
+            <div class="title-bar">
+                <span>Test Bridge Native - Windows 98</span>
+                <div class="title-bar-buttons">
+                    <a href="#" class="title-button">_</a>
+                    <a href="#" class="title-button">□</a>
+                    <a href="#" class="title-button">×</a>
+                </div>
+            </div>
+            <div class="window-content">
+                <div>Choisissez un type d'alerte :</div>
+                <div class="divider"></div>
+                <div class="button-group">
+                    <button onclick="showSimpleAlert()">Alerte Simple</button>
+                    <button onclick="showActionAlert()">Alerte avec Actions</button>
+                    <button onclick="showNonBlockingAlert()">Alerte Non-Bloquante</button>
+                    <button onclick="showBlockingAlert()">⚠️ Alerte Bloquante</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="taskbar">
+        <div class="start-button">
+            🏁 Démarrer
+        </div>
+    </div>
+
+    <script>
+        // Vérification de l'environnement iOS WebView
+        function isInWebView() {
+            return window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.nativeBridge;
+        }
+
+        // Callback pour les réponses des alertes
+        window.alertCallback = function(buttonTitle) {
+            console.log('Bouton cliqué:', buttonTitle);
+        };
+
+        // Alerte simple avec un seul bouton
+        function showSimpleAlert() {
+            const alertConfig = {
+                title: "Information",
+                message: "Ceci est une alerte simple avec un seul bouton.",
+                buttons: [{
+                    title: "OK",
+                    style: "default"
+                }],
+                isCancellable: false
+            };
+            
+            showCustomAlert(alertConfig);
+        }
+
+        // Alerte avec deux boutons dont un qui ouvre une URL
+        function showActionAlert() {
+            const alertConfig = {
+                title: "Action Requise",
+                message: "Voulez-vous visiter notre site web ?",
+                buttons: [
+                    {
+                        title: "Visiter",
+                        style: "default",
+                        url: "https://www.example.com"
+                    },
+                    {
+                        title: "Annuler",
+                        style: "cancel"
+                    }
+                ],
+                isCancellable: false
+            };
+            
+            showCustomAlert(alertConfig);
+        }
+
+        // Alerte non-bloquante
+        function showNonBlockingAlert() {
+            const alertConfig = {
+                title: "Notification",
+                message: "Cette alerte peut être ignorée en tapant en dehors.",
+                buttons: [{
+                    title: "OK",
+                    style: "default"
+                }],
+                isCancellable: true,
+                isCompletelyBlocking: false
+            };
+            
+            showCustomAlert(alertConfig);
+        }
+
+        // Alerte totalement bloquante
+        function showBlockingAlert() {
+            const alertConfig = {
+                title: "⚠️ Alerte Bloquante",
+                message: "Cette alerte ne peut pas être fermée, même en cliquant sur les boutons.",
+                buttons: [
+                    {
+                        title: "Action",
+                        style: "default",
+                        url: "https://www.example.com"
+                    },
+                    {
+                        title: "Ne Fermera Pas",
+                        style: "cancel"
+                    }
+                ],
+                isCancellable: false,
+                isCompletelyBlocking: true
+            };
+            
+            showCustomAlert(alertConfig);
+        }
+
+        // Fonction principale pour afficher une alerte
+        function showCustomAlert(config) {
+            if (isInWebView()) {
+                window.webkit.messageHandlers.nativeBridge.postMessage({
+                    'action': 'showCustomAlert',
+                    'data': config
+                });
+            } else {
+                console.log('Configuration alerte:', config);
+                alert(`[TEST NAVIGATEUR]\nTitre: ${config.title}\nMessage: ${config.message}`);
+            }
+        }
+
+        // Gestion des boutons de la barre de titre (pour l'effet visuel)
+        document.querySelectorAll('.title-button').forEach(button => {
+            button.addEventListener('mousedown', function(e) {
+                e.preventDefault();
+                this.style.borderColor = '#808080 #ffffff #ffffff #808080';
+            });
+            
+            button.addEventListener('mouseup', function(e) {
+                e.preventDefault();
+                this.style.borderColor = '#ffffff #808080 #808080 #ffffff';
+            });
+        });
+    </script>
+</body>
+</html>
