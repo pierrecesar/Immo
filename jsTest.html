@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Bridge Native</title>
+    <title>Test Bridge Native Avancé</title>
     <style>
         body {
             font-family: -apple-system, system-ui, sans-serif;
@@ -23,6 +23,15 @@
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
         }
 
         button {
@@ -43,9 +52,12 @@
 </head>
 <body>
     <div class="container">
-        <h1>Test Bridge iOS Native</h1>
-        <p>Cliquez sur le bouton pour tester l'alerte native iOS</p>
-        <button onclick="showAlert('Test depuis la page web !')">Ouvrir Alerte Native</button>
+        <h1>Test des Alertes Natives</h1>
+        <div class="button-group">
+            <button onclick="showSimpleAlert()">Alerte Simple</button>
+            <button onclick="showActionAlert()">Alerte avec Actions</button>
+            <button onclick="showNonBlockingAlert()">Alerte Non-Bloquante</button>
+        </div>
     </div>
 
     <script>
@@ -54,17 +66,75 @@
             return window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.nativeBridge;
         }
 
-        // Fonction pour afficher l'alerte
-        function showAlert(message) {
+        // Callback pour les réponses des alertes
+        window.alertCallback = function(buttonTitle) {
+            console.log('Bouton cliqué:', buttonTitle);
+        };
+
+        // Alerte simple avec un seul bouton
+        function showSimpleAlert() {
+            const alertConfig = {
+                title: "Information",
+                message: "Ceci est une alerte simple avec un seul bouton.",
+                buttons: [{
+                    title: "OK",
+                    style: "default"
+                }],
+                isCancellable: false
+            };
+            
+            showCustomAlert(alertConfig);
+        }
+
+        // Alerte avec deux boutons dont un qui ouvre une URL
+        function showActionAlert() {
+            const alertConfig = {
+                title: "Action Requise",
+                message: "Voulez-vous visiter notre site web ?",
+                buttons: [
+                    {
+                        title: "Visiter",
+                        style: "default",
+                        url: "https://www.example.com"
+                    },
+                    {
+                        title: "Annuler",
+                        style: "cancel"
+                    }
+                ],
+                isCancellable: false
+            };
+            
+            showCustomAlert(alertConfig);
+        }
+
+        // Alerte non-bloquante
+        function showNonBlockingAlert() {
+            const alertConfig = {
+                title: "Notification",
+                message: "Cette alerte peut être ignorée en tapant en dehors.",
+                buttons: [{
+                    title: "OK",
+                    style: "default"
+                }],
+                isCancellable: true
+            };
+            
+            showCustomAlert(alertConfig);
+        }
+
+        // Fonction principale pour afficher une alerte
+        function showCustomAlert(config) {
             if (isInWebView()) {
-                // Appel de la méthode native
+                // Envoi à l'app native
                 window.webkit.messageHandlers.nativeBridge.postMessage({
-                    'action': 'showAlert',
-                    'message': message
+                    'action': 'showCustomAlert',
+                    'data': config
                 });
             } else {
-                // Fallback pour le test dans un navigateur
-                alert('Version navigateur: ' + message);
+                // Version navigateur pour test
+                console.log('Configuration alerte:', config);
+                alert(`[TEST NAVIGATEUR]\nTitre: ${config.title}\nMessage: ${config.message}`);
             }
         }
     </script>
