@@ -56,7 +56,6 @@
         <div class="button-group">
             <button onclick="showSimpleAlert()">Alerte Simple</button>
             <button onclick="showActionAlert()">Alerte avec Actions</button>
-            <button onclick="showNonBlockingAlert()">Alerte Non-Bloquante</button>
             <button onclick="showBlockingAlert()">Alerte Totalement Bloquante</button>
         </div>
     </div>
@@ -91,15 +90,15 @@
         function showActionAlert() {
             const alertConfig = {
                 title: "Action Requise",
-                message: "Voulez-vous visiter notre site web ?",
+                message: "Veuillez mettre jour cette application",
                 buttons: [
                     {
-                        title: "Visiter",
+                        title: "Mettre à jour",
                         style: "default",
                         url: "https://www.example.com"
                     },
                     {
-                        title: "Annuler",
+                        title: "Plus tard",
                         style: "cancel"
                     }
                 ],
@@ -128,16 +127,13 @@
         // Alerte totalement bloquante
         function showBlockingAlert() {
             const alertConfig = {
-                title: "⚠️ Alerte Bloquante",
-                message: "Cette alerte ne peut pas être fermée, même en cliquant sur les boutons.",
+                title: "Oups 😬",
+                message: "La mise à jour de cette application est nécéssaire pour pouvoir continuer",
                 buttons: [
                     {
-                        title: "Action Inactive",
-                        style: "default"
-                    },
-                    {
-                        title: "Ne Fermera Pas",
-                        style: "cancel"
+                        title: "Mettre à jour",
+                        style: "default",
+                        url: "https://www.example.com"
                     }
                 ],
                 isCancellable: false,
