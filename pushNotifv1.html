@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token Receiver</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #ff4d4d; /* 🔴 Rouge par défaut */
+            transition: background-color 1s ease-in-out;
+        }
+        
+        #message {
+            font-size: 24px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transition: transform 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div id="message">⏳ En attente du token...</div>
+
+    <script>
+        function updateToken(token) {
+            // Changer le message
+            document.getElementById('message').textContent = "✅ Token reçu : " + token;
+
+            // Changer la couleur de fond vers le vert
+            document.body.style.backgroundColor = "#4CAF50"; // 🟢 Vert
+
+            // Ajouter un effet de zoom-in sur le message
+            document.getElementById('message').style.transform = "scale(1.1)";
+        }
+
+        // Test manuel : Tapez dans la console -> updateToken("TEST123");
+    </script>
+</body>
+</html>
