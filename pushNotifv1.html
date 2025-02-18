@@ -3,42 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Token Receiver</title>
+    <title>Token Receiver - Win98</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+        
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            font-family: Arial, sans-serif;
-            background-color: #ff4d4d; /* 🔴 Rouge par défaut */
-            transition: background-color 1s ease-in-out;
+            background-color: #008080;
+            background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.1) 0px, rgba(255,255,255,0.1) 2px, transparent 2px, transparent 4px);
+            font-family: "MS Sans Serif", "Microsoft Sans Serif", sans-serif;
         }
         
-        #message {
-            font-size: 24px;
+        .window {
+            background-color: #c0c0c0;
+            border: 2px solid;
+            border-color: #ffffff #808080 #808080 #ffffff;
+            box-shadow: 2px 2px 0 #000;
+            padding: 2px;
+            max-width: 400px;
+            width: 90%;
+        }
+        
+        .title-bar {
+            background: #000080;
+            padding: 3px 5px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        .title-bar .close {
+            width: 16px;
+            height: 14px;
+            background: #c0c0c0;
+            border: 1px solid;
+            border-color: #ffffff #808080 #808080 #ffffff;
+            font-size: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            cursor: pointer;
+        }
+        
+        .message-box {
             padding: 20px;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            font-size: 14px;
+            background-color: #c0c0c0;
+            border: 2px solid;
+            border-color: #dfdfdf #808080 #808080 #dfdfdf;
             text-align: center;
-            transition: transform 0.5s ease-in-out;
         }
     </style>
 </head>
 <body>
-    <div id="message">⏳ En attente du token...</div>
+    <div class="window">
+        <div class="title-bar">
+            <span>Token Receiver</span>
+            <div class="close">×</div>
+        </div>
+        <div id="message" class="message-box">⏳ En attente du token...</div>
+    </div>
 
     <script>
         function updateToken(token) {
-            // Changer le message
             document.getElementById('message').textContent = "✅ Token reçu : " + token;
-
-            // Changer la couleur de fond vers le vert
-            document.body.style.backgroundColor = "#4CAF50"; // 🟢 Vert
-
-            // Ajouter un effet de zoom-in sur le message
-            document.getElementById('message').style.transform = "scale(1.1)";
+            document.body.style.backgroundColor = "#00AA00"; // 🟢 Vert Windows 98
         }
 
         // Test manuel : Tapez dans la console -> updateToken("TEST123");
